@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws ClassNotFoundException{
         String url ="jdbc:mysql://localhost:3306/mydatabase";
         String username="root";
-        String password = "Vinayak@102711";
+        String password = "Enter Password ";
         String query="select * from employees;";
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -21,11 +21,13 @@ public class Main {
             System.out.println("Connection establish successfully.");
             Statement stmt=con.createStatement();
             ResultSet rs=stmt.executeQuery(query);
+            
             while (rs.next()){
                 int id=rs.getInt("id");
                 String name=rs.getString("name");
                 String job_title=rs.getString("job_title");
                 Double salary =rs.getDouble("salary");
+                
                 System.out.println();
                 System.out.println("==========================");
                 System.out.println("ID : "+id);
@@ -33,7 +35,8 @@ public class Main {
                 System.out.println("job_title : "+job_title);
                 System.out.println("salary : "+salary);
                 }
-                rs.close();
+            
+            rs.close();
             stmt.xc();
             con.close();
             System.out.println("Connection closed successfully");
@@ -42,4 +45,5 @@ public class Main {
         }
 
     }
+
 }
